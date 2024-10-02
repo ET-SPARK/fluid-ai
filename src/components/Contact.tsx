@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
+import Image, { StaticImageData } from "next/image"; // Import StaticImageData
 import ContactBg from "../assets/contactBg.png";
 import Hand from "../assets/hand.png";
-import Image from "next/image";
 import Uae from "../assets/uae.png";
 import Usa from "../assets/usa.png";
 import Pol from "../assets/pol.png";
@@ -11,7 +11,7 @@ import Fra from "../assets/fra.png";
 // Define the type for country objects
 interface Country {
   name: string;
-  flag: StaticImageData; // Assuming you're using Next.js Image with imported static images
+  flag: StaticImageData; // Now properly imported from next/image
 }
 
 function Contact() {
