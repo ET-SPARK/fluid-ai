@@ -8,8 +8,14 @@ import Usa from "../assets/usa.png";
 import Pol from "../assets/pol.png";
 import Fra from "../assets/fra.png";
 
+// Define the type for country objects
+interface Country {
+  name: string;
+  flag: StaticImageData; // Assuming you're using Next.js Image with imported static images
+}
+
 function Contact() {
-  const countries = [
+  const countries: Country[] = [
     { name: "United Arab Emirates", flag: Uae },
     { name: "USA", flag: Usa },
     { name: "Poland", flag: Pol },
@@ -21,7 +27,7 @@ function Contact() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // Handle country selection
-  const handleCountrySelect = (country) => {
+  const handleCountrySelect = (country: Country) => {
     setSelectedCountry(country.name);
     setDropdownOpen(false); // Close dropdown after selection
   };
