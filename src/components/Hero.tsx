@@ -8,7 +8,6 @@ import Inc from "../assets/inc.png"; // Replace with your image path
 import { motion } from "framer-motion";
 import Header from "./Header";
 import Dubai from "../assets/dubai.png"; // Replace with your image path
-import Dots from "../assets/3dot.png";
 import Event from "../assets/Event.png";
 import Tab from "../assets/Tab.png";
 import Ticket from "../assets/ticket.png";
@@ -32,9 +31,8 @@ function Hero() {
     };
   }, []);
 
-  const headerTranslateY = scrollY < 250 ? 0 : -scrollY + 250; // Header translateY
-  const logoScale = scrollY < 250 ? 1 - scrollY / 1000 : 0.5; // Scale logo based on scroll (min scale 0.5)
-
+  const headerTranslateY = scrollY < 350 ? 0 : -scrollY + 350; // Header translateY
+  const logoScale = scrollY < 350 ? 1 - scrollY / 1000 : 0.5; // Scale logo based on scroll (min scale 0.5)
   const imageX = (Math.min(Math.max(scrollY, 0), 250) / 250) * 253; // Move from -53 to 0 based on scroll
 
   // Calculate the x position based on scroll for Inc image
@@ -54,132 +52,123 @@ function Hero() {
         style={{ transform: `translateY(${headerTranslateY}px)` }}
       >
         <Header />
-        <div className="w-full flex justify-center items-center mt-[40vh]">
+        <div className="w-full flex justify-center items-center mt-[40vh] max-[460px]:mt-[20vh]">
           <motion.div
             className="transition-transform duration-800"
             style={{ scale: logoScale }} // Apply scale transformation
           >
-            <Image src={Logo} alt="logo" width={300} />
+            <Image
+              src={Logo}
+              alt="logo"
+              width={300}
+              className="max-[460px]:w-[200px]"
+            />
           </motion.div>
         </div>
       </div>
 
       {/* Container for Hero Background and Text */}
-      <div className="relative z-10 mt-[60vh]">
+      <div className="relative z-10 mt-[60vh] max-[460px]:mt-[80vh]">
         <Image src={HeroBg} alt="Background" className="w-full" />
-
         <motion.div
-          className="absolute top-[10%]"
+          className="absolute top-[30%] "
           style={{ left: `${imageX}px` }} // Move from left 0 to left 53 based on scroll
           transition={{ duration: 0.5 }} // Adjust duration as needed
         >
-          <div className="relative">
-            <Image src={Dubai} alt="dubai" className="w-full" />
-            <span className="absolute top-2 left-2 bg-slate-200 text-white bg-opacity-30 text-sm py-1 px-2 rounded-[38px]">
-              Restaurant
-            </span>
-            <div className="font-semibold">
-              <span className="absolute top-2 right-2 text-white text-sm">
-                <Image src={Dots} alt="dot" />
-              </span>
-              <span className="absolute bottom-8 left-2 text-white text-[16px]">
-                Clap Dubai
-              </span>
-              <span className="absolute bottom-2 left-2 text-gray-200 text-[14px]">
-                4.4 • $$$$ • Japanese • 123
-              </span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Inc Image moving from left to its position */}
-        <motion.div
-          className="absolute top-[35%]"
-          style={{ left: `${incImageX}px` }} // Move from left 0 to desired position based on scroll
-          transition={{ duration: 0.5 }} // Adjust duration as needed
-        >
-          <Image src={Inc} alt="inc" className="w-full" />
-        </motion.div>
-
-        <motion.div
-          className="absolute top-[45%]"
-          style={{ left: `${incImageX}px` }} // Move from left 0 to desired position based on scroll
-          transition={{ duration: 0.5 }} // Adjust duration as needed
-        >
-          <Image src={Event} alt="inc" className="w-full" />
+          <Image
+            src={Dubai}
+            alt="Dubai"
+            className="w-full max-[460px]:w-[100px]"
+          />
         </motion.div>
 
         <motion.div
           className="absolute top-[55%]"
-          style={{ left: `${tabImageX}px` }} // Move from left 0 to desired position based on scroll
-          transition={{ duration: 0.5 }} // Adjust duration as needed
+          style={{ left: `${incImageX}px` }} // Move from left 0 to desired position based on scroll
+          transition={{ duration: 0.5 }}
         >
-          <Image src={Tab} alt="inc" className="w-full" />
+          <Image src={Inc} alt="inc" className="w-full max-[460px]:w-1/2" />
         </motion.div>
 
         <motion.div
           className="absolute top-[65%]"
-          style={{ left: `${ticketImageX}px` }} // Move from left 0 to desired position based on scroll
-          transition={{ duration: 0.5 }} // Adjust duration as needed
+          style={{ left: `${incImageX}px` }}
+          transition={{ duration: 0.5 }}
         >
-          <Image src={Ticket} alt="inc" className="w-full" />
+          <Image src={Event} alt="Event" className="w-full max-[460px]:w-1/2" />
         </motion.div>
 
         <motion.div
-          className="absolute top-[10%]"
-          style={{ right: `${renewImageX}px` }} // Move from off-screen (right) to final position
-          transition={{ duration: 0.5 }} // Adjust duration as needed
+          className="absolute top-[75%]"
+          style={{ left: `${tabImageX}px` }}
+          transition={{ duration: 0.5 }}
         >
-          <Image src={Renew} alt="inc" className="w-full" />
+          <Image src={Tab} alt="Tab" className="w-full max-[460px]:w-1/2" />
         </motion.div>
 
         <motion.div
-          className="absolute top-[20%]"
-          style={{ right: `${KiteImageX}px` }} // Move from off-screen (right) to final position
-          transition={{ duration: 0.5 }} // Adjust duration as needed
+          className="absolute top-[85%]"
+          style={{ left: `${ticketImageX}px` }}
+          transition={{ duration: 0.5 }}
         >
-          <Image src={Kite} alt="inc" className="w-full" />
+          <Image
+            src={Ticket}
+            alt="Ticket"
+            className="w-full max-[460px]:w-1/2"
+          />
         </motion.div>
 
         <motion.div
-          className="absolute top-[35%]"
-          style={{ right: `${bookFImageX}px` }} // Move from off-screen (right) to final position
-          transition={{ duration: 0.5 }} // Adjust duration as needed
+          className="absolute top-[30%]"
+          style={{ right: `${renewImageX}px` }}
+          transition={{ duration: 0.5 }}
         >
-          <Image src={Bookf} alt="inc" className="w-full" />
+          <Image src={Renew} alt="Renew" className="w-full max-[460px]:w-1/2" />
         </motion.div>
 
         <motion.div
-          className="absolute top-[45%]"
-          style={{ right: `${TripImageX}px` }} // Move from off-screen (right) to final position
-          transition={{ duration: 0.5 }} // Adjust duration as needed
+          className="absolute top-[40%]"
+          style={{ right: `${KiteImageX}px` }}
+          transition={{ duration: 0.5 }}
         >
-          <Image src={Trip} alt="inc" className="w-full" />
-        </motion.div>
-
-        <motion.div
-          className="absolute top-[45%]"
-          style={{ right: `${TripImageX}px` }} // Move from off-screen (right) to final position
-          transition={{ duration: 0.5 }} // Adjust duration as needed
-        >
-          <Image src={Trip} alt="inc" className="w-full" />
+          <Image src={Kite} alt="Kite" className="w-full max-[460px]:w-1/2" />
         </motion.div>
 
         <motion.div
           className="absolute top-[55%]"
-          style={{ right: `${ReservationImageX}px` }} // Move from off-screen (right) to final position
-          transition={{ duration: 0.5 }} // Adjust duration as needed
+          style={{ right: `${bookFImageX}px` }}
+          transition={{ duration: 0.5 }}
         >
-          <Image src={Reservation} alt="inc" className="w-full" />
+          <Image src={Bookf} alt="Bookf" className="w-full max-[460px]:w-1/2" />
         </motion.div>
 
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3">
-          <div className="text-[42px] mt-10 text-center flex flex-col">
+        <motion.div
+          className="absolute top-[65%]"
+          style={{ right: `${TripImageX}px` }}
+          transition={{ duration: 0.5 }}
+        >
+          <Image src={Trip} alt="Trip" className="w-full max-[460px]:w-1/2" />
+        </motion.div>
+
+        <motion.div
+          className="absolute top-[75%]"
+          style={{ right: `${ReservationImageX}px` }}
+          transition={{ duration: 0.5 }}
+        >
+          <Image
+            src={Reservation}
+            alt="Reservation"
+            className="w-full max-[460px]:w-1/2"
+          />
+        </motion.div>
+
+        <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/3">
+          <div className="text-[42px] max-[460px]:text-[24px] mt-10 max-[460px]:mt-20 text-center flex flex-col">
             <span>Unlock Seamless</span>
             <span>Efficiency</span>
           </div>
-          <div className="flex justify-center text-sm mt-4">
-            <button className="bg-white text-black p-4 rounded-[28px] w-[167px] h-[52px] shadow-[0_0_15px_2px_rgba(255,255,255,1)]">
+          <div className="flex justify-center text-sm max-[460px]:text-[10px] mt-4">
+            <button className="bg-white text-black p-4 rounded-[28px] w-[167px] h-[52px] max-[460px]:w-[100px] shadow-[0_0_15px_2px_rgba(255,255,255,1)]">
               Join Waitlist
             </button>
           </div>
